@@ -1,0 +1,9 @@
+{
+  "devEnv": {
+    "prod": {
+      "portalUrl": "https://blm-egis.maps.arcgis.com",
+      "clientId": "jtFFfwvhEtJWwLMW",
+      "isWebTier": false
+    }
+  }
+}

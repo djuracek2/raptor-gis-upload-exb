@@ -1,0 +1,51 @@
+{
+  "entrypoints": {
+    "widgets/simple/dist/runtime/widget": {
+      "chunks": [
+        {
+          "id": "widgets/simple/dist/runtime/widget",
+          "names": [
+            "widgets/simple/dist/runtime/widget"
+          ],
+          "modules": [
+            "./jimu-core/lib/set-public-path.ts",
+            "./your-extensions/widgets/simple/src/runtime/widget.tsx"
+          ]
+        }
+      ]
+    },
+    "widgets/upload/dist/runtime/widget": {
+      "chunks": [
+        {
+          "id": "widgets/upload/dist/runtime/widget",
+          "names": [
+            "widgets/upload/dist/runtime/widget"
+          ],
+          "modules": [
+            "./jimu-core/lib/set-public-path.ts",
+            "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./your-extensions/widgets/upload/src/runtime/app.css",
+            "./node_modules/css-loader/dist/runtime/api.js",
+            "./node_modules/css-loader/dist/runtime/noSourceMaps.js",
+            "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js",
+            "./node_modules/style-loader/dist/runtime/insertBySelector.js",
+            "./node_modules/style-loader/dist/runtime/insertStyleElement.js",
+            "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js",
+            "./node_modules/style-loader/dist/runtime/styleDomAPI.js",
+            "./node_modules/style-loader/dist/runtime/styleTagTransform.js",
+            "./your-extensions/widgets/upload/src/appicon.png",
+            "./your-extensions/widgets/upload/src/fileGDB.png",
+            "./your-extensions/widgets/upload/src/microsoft-access-2019.png",
+            "./your-extensions/widgets/upload/src/runtime/app.css",
+            "./your-extensions/widgets/upload/src/runtime/widget.tsx"
+          ]
+        }
+      ]
+    }
+  },
+  "chunks": [],
+  "errors": [],
+  "warnings": [],
+  "outputPath": "C:\\Users\\djuracek\\raptor-gis-exb\\ArcGISExperienceBuilder\\client\\dist-prod",
+  "publicPath": "",
+  "version": "5.89.0"
+}

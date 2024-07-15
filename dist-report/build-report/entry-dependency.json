@@ -1,0 +1,30 @@
+{
+  "nodes": [
+    {
+      "name": "widgets/simple/dist/runtime/widget",
+      "size": 1507
+    },
+    {
+      "name": "widgets/upload/dist/runtime/widget",
+      "size": 199497
+    }
+  ],
+  "links": [
+    {
+      "source": "widgets/simple/dist/runtime/widget",
+      "target": "jimu-core/index"
+    },
+    {
+      "source": "widgets/upload/dist/runtime/widget",
+      "target": "jimu-core/index"
+    },
+    {
+      "source": "widgets/upload/dist/runtime/widget",
+      "target": "jimu-core/react"
+    },
+    {
+      "source": "widgets/upload/dist/runtime/widget",
+      "target": "jimu-ui/index"
+    }
+  ]
+}
