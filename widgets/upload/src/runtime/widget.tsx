@@ -78,7 +78,7 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
       alert('No Application number found in the URL, please check with Raptor Administrator.')
       return
     }
-    const uploadURL = 'https://localhost:8080/raptor/api/gis/uploadDataFile'
+    const uploadURL = 'http://localhost:8080/raptor/api/gis/uploadDataFile'
     const xhr = new XMLHttpRequest()
 
     xhr.onreadystatechange = function () {

@@ -48,7 +48,7 @@ const SciDownload = (appType) => {
 
   const onDownloadTemplate = (module, infile) => {
     const xhr = new XMLHttpRequest()
-    const filedownloadPath = 'https://localhost:8080/raptor/api/attachment/downloadGISTemplate?module='
+    const filedownloadPath = 'http://localhost:8080/raptor/api/attachment/downloadGISTemplate?module='
     // const filedownloadPath = widgetContext.appConfig.RaptorConfigServices.filedownloadURL;
     const inFileName = infile
 
@@ -73,7 +73,7 @@ const SciDownload = (appType) => {
 
   const onDownloadClick = (module, infile) => {
     const xhr = new XMLHttpRequest()
-    const filedownloadPath = 'https://localhost:8080/raptor/api/attachment/downloadGISTemplate?module='
+    const filedownloadPath = 'http://localhost:8080/raptor/api/attachment/downloadGISTemplate?module='
     // const filedownloadPath = widgetContext.appConfig.RaptorConfigServices.filedownloadURL;
     const inFileName = infile
 
