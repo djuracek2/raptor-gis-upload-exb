@@ -3,7 +3,12 @@ import React, { useState, useEffect } from 'react'
 import { type IMConfig } from '../config'
 import { FormGroup, Input, Button } from 'jimu-ui'
 
-const UploadFile = (appType, handleFileChange, message) => {
+const UploadFile = ({ appType, onFileChange, message }) => {
+  const handleInputChange = (event) => {
+    const selectedFile = event.target.files[0]
+    onFileChange(selectedFile)
+  }
+
   return (
         <div className='upload-div'>
         <div className='d-flex justify-content-center'>
@@ -19,7 +24,7 @@ const UploadFile = (appType, handleFileChange, message) => {
         </div>
         <div className='d-flex justify-content-center' style={{ paddingLeft: '60px' }}>
           <FormGroup>
-            <Input type="file" name="file" id="inFile" onChange={handleFileChange}/>
+            <Input type="file" name="file" id="inFile" onChange={handleInputChange}/>
           </FormGroup>
         </div>
         <div className="d-flex">

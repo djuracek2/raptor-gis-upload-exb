@@ -16,10 +16,10 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   const [appType, setAppType] = useState('SCI')
   const [isSuccessful, setIsSuccessful] = useState('')
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0]
-    setSelectedFile(file)
-    console.log(file)
+  const handleFileChange = (selectedfile) => {
+    // const file = event.target.files[0]
+    setSelectedFile(selectedfile)
+    console.log(selectedfile)
   }
 
   const handleDownload = () => {
@@ -120,7 +120,7 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   return (
     <div className="widget-demo jimu-widget m-2">
       { isUpload ?
-      <UploadFile appType={appType} handleFileChange={handleFileChange} message={message} />
+      < UploadFile appType={appType} onFileChange={handleFileChange} message={message} />
         : ''}
       { isDownload
         ? <div className='download-div'>
