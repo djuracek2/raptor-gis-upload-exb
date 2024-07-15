@@ -31,3 +31,17 @@
     text-align: center;
 }
 
+.message-status {
+    padding-right: 10px;
+}
+
+.message-success {
+    color: green;
+    font-weight: bold;
+}
+
+.message-failure {
+    color: red;
+    font-weight: bold;
+}
+

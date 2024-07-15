@@ -15,7 +15,9 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   const [actionType, setActionType] = useState('Download')
   const [appType, setAppType] = useState('SCI')
   const [isSuccessful, setIsSuccessful] = useState('')
-
+  // const [message, setMessage] = useState('')
+  // const [messageClass, setMessageClass] = useState('')
+ 
   const handleFileChange = (selectedfile) => {
     // const file = event.target.files[0]
     setSelectedFile(selectedfile)
@@ -109,10 +111,15 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   }
 
   let message
+  let messageClass
   if (isSuccessful === 'success') {
     message = 'Data was successfully uploaded. BLM staff will now review the data.'
+    messageClass = 'message-success'
+    // setMessageClass('message-success')
   } else if (isSuccessful === 'unsuccessful') {
     message = 'Data upload was unsuccessful. Check email for a detailed data quality report. Resolve these data quality errors then re-initiate data upload here.'
+    messageClass = 'message-failure'
+    // setMessageClass('message-failure')
   } else {
     message = ''
   }
@@ -120,7 +127,7 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   return (
     <div className="widget-demo jimu-widget m-2">
       { isUpload ?
-      < UploadFile appType={appType} onFileChange={handleFileChange} message={message} />
+      < UploadFile appType={appType} onFileChange={handleFileChange} message={message} messageClass={messageClass} />
         : ''}
       { isDownload
         ? <div className='download-div'>
