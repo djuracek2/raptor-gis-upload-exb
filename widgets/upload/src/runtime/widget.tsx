@@ -58,20 +58,15 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
     const Id = params.get('taskId')
     const appNumber = params.get('appNumber')
     setActionType(action)
-    setAppType('PAL')
+    setAppType(raptorType)
     setTaskId(Id)
     setAppNumber(appNumber)
-    console.log('ActionType is:', action)
-    console.log('raptor Type is:', raptorType)
-    console.log('taskId:', Id)
-    console.log('appNumber is:', appNumber)
-    // setAppType(raptorType)
-
+    // console.log('ActionType is:', action)
+    // console.log('raptor Type is:', raptorType)
+    // console.log('taskId:', Id)
+    // console.log('appNumber is:', appNumber)
   }, [])
 
- 
-
-  
 
   function getCookie (cname) {
     const name = cname + '='
