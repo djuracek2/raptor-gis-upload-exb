@@ -57,30 +57,41 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
 
   let taskId
 
-  function getCookie (cname) {
-    const name = cname + '='
-    const decodedCookies = decodeURIComponent(document.cookie)
-    console.log(document.cookie)
-    const ca = decodedCookies.split(';')
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i]
-      while (c.charAt(0) === ' ') {
-        c = c.substring(1)
-      }
-      if (c.indexOf(name) === 0) {
-        return c.substring(name.length, c.length)
-      }
-    }
-    return ''
+  const getCookie = (name) => {
+    const value = `;${document.cookie}`
+    const parts = value.split(`; ${name}=`)
+    if (parts.length === 2) return parts.pop().split(';').shift()
+    return null
   }
 
+  // function getCookie (cname) {
+  //   const name = cname + '='
+  //   const decodedCookies = decodeURIComponent(document.cookie)
+  //   console.log(document.cookie)
+  //   const ca = decodedCookies.split(';')
+  //   for (let i = 0; i < ca.length; i++) {
+  //     let c = ca[i]
+  //     while (c.charAt(0) === ' ') {
+  //       c = c.substring(1)
+  //     }
+  //     if (c.indexOf(name) === 0) {
+  //       return c.substring(name.length, c.length)
+  //     }
+  //   }
+  //   return ''
+  // }
+
   function onUploadClick () {
-    taskId = '60051'
+    // full url: https://permits.test.blm.doi.net:8111/raptor-egis/?raptorType=PAL&actionType=Upload&taskId=61986&appNumber=2024-00474
+    // appnumber from url if needed, too
+    let appNumber ='2024-00474'
+    // active, ensure it doesn't get submitted to gis raptor api
+    taskId = '61986'
     if (taskId == null || taskId === '') {
       alert('No Application number found in the URL, please check with Raptor Administrator.')
       return
     }
-    const uploadURL = 'http://localhost:8080/raptor/api/gis/uploadDataFile'
+    const uploadURL = 'https://localhost:9264/raptor/api/gis/uploadDataFile'
     const xhr = new XMLHttpRequest()
 
     xhr.onreadystatechange = function () {
@@ -102,10 +113,13 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
       }
     }
 
+    console.log('CSRF-Token:', getCookie('XSRF-TOKEN'))
+
     const formData = new FormData()
     formData.append('taskId', taskId)
     formData.append('file', selectedFile)
     xhr.open('POST', uploadURL)
+    xhr.setRequestHeader('Content-Type', 'multipart/form-data')
     xhr.setRequestHeader('X-XSRF-TOKEN', getCookie('XSRF-TOKEN'))
     xhr.send(formData)
   }
