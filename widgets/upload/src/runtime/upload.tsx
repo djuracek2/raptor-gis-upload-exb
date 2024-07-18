@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { type IMConfig } from '../config'
 import { FormGroup, Input, Button } from 'jimu-ui'
 
-const UploadFile = (appType, handleFileChange, message) => {
+const UploadFile = ({ appType, handleFileChange, message }) => {
   return (
         <div className='upload-div'>
         <div className='d-flex justify-content-center'>

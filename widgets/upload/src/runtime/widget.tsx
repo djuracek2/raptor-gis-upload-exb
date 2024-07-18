@@ -129,7 +129,7 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   let message
   if (isSuccessful === 'success') {
     message = 'Data was successfully uploaded. BLM staff will now review the data.'
-  } else if (isSuccessful === 'unsuccessful') {
+  } else if (isSuccessful !== 'success') {
     message = 'Data upload was unsuccessful. Check email for a detailed data quality report. Resolve these data quality errors then re-initiate data upload here.'
   } else {
     message = ''
