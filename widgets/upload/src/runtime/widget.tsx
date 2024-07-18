@@ -16,6 +16,7 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   const [appType, setAppType] = useState('SCI')
   const [isSuccessful, setIsSuccessful] = useState('')
 
+
   const handleFileChange = (event) => {
     const file = event.target.files[0]
     setSelectedFile(file)
@@ -44,16 +45,28 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
     }
   }
 
+  let taskId
+
+  // ?raptorType=PAL&actionType=Upload&taskId=61986&appNumber=2024-00474
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
-    const actionType = params.get('actionType')
+    const action = params.get('actionType')
     const raptorType = params.get('raptorType')
-    setActionType(actionType)
+    taskId = params.get('taskId')
+    const appNumber = params.get('appNumber')
+    setActionType(action)
+    console.log('ActionType is:', action)
+    console.log('raptor Type is:', raptorType)
+    console.log('taskId:', taskId)
+    console.log('appNumber is:', appNumber)
     // setAppType(raptorType)
     setAppType('PAL')
   }, [])
 
-  let taskId
+ 
+
+  
 
   function getCookie (cname) {
     const name = cname + '='
