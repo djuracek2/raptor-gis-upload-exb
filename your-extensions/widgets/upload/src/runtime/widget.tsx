@@ -13,8 +13,11 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   const [isUpload, setIsUpload] = useState(true)
   const [isDownload, setIsDownload] = useState(false)
   const [actionType, setActionType] = useState('Download')
+  const [taskId, setTaskId] = useState('')
   const [appType, setAppType] = useState('SCI')
+  const [appNumber, setAppNumber] = useState('')
   const [isSuccessful, setIsSuccessful] = useState('')
+
 
   const handleFileChange = (event) => {
     const file = event.target.files[0]
@@ -44,16 +47,31 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
     }
   }
 
+  // let taskId
+
+  // ?raptorType=PAL&actionType=Upload&taskId=61986&appNumber=2024-00474
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
-    const actionType = params.get('actionType')
+    const action = params.get('actionType')
     const raptorType = params.get('raptorType')
-    setActionType(actionType)
-    // setAppType(raptorType)
+    const Id = params.get('taskId')
+    const appNumber = params.get('appNumber')
+    setActionType(action)
     setAppType('PAL')
+    setTaskId(Id)
+    setAppNumber(appNumber)
+    console.log('ActionType is:', action)
+    console.log('raptor Type is:', raptorType)
+    console.log('taskId:', Id)
+    console.log('appNumber is:', appNumber)
+    // setAppType(raptorType)
+
   }, [])
 
-  let taskId
+ 
+
+  
 
   function getCookie (cname) {
     const name = cname + '='
@@ -73,12 +91,12 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   }
 
   function onUploadClick () {
-    taskId = '60051'
+    // taskId = '60051'
     if (taskId == null || taskId === '') {
       alert('No Application number found in the URL, please check with Raptor Administrator.')
       return
     }
-    const uploadURL = 'https://localhost:8080/raptor/api/gis/uploadDataFile'
+    const uploadURL = 'https://localhost:9264/raptor/api/gis/uploadDataFile'
     const xhr = new XMLHttpRequest()
 
     xhr.onreadystatechange = function () {
