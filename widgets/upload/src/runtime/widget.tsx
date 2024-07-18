@@ -13,7 +13,9 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   const [isUpload, setIsUpload] = useState(true)
   const [isDownload, setIsDownload] = useState(false)
   const [actionType, setActionType] = useState('Download')
+  const [taskId, setTaskId] = useState('')
   const [appType, setAppType] = useState('SCI')
+  const [appNumber, setAppNumber] = useState('')
   const [isSuccessful, setIsSuccessful] = useState('')
 
 
@@ -45,7 +47,7 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
     }
   }
 
-  let taskId
+  // let taskId
 
   // ?raptorType=PAL&actionType=Upload&taskId=61986&appNumber=2024-00474
 
@@ -53,15 +55,18 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
     const params = new URLSearchParams(window.location.search)
     const action = params.get('actionType')
     const raptorType = params.get('raptorType')
-    taskId = params.get('taskId')
+    const Id = params.get('taskId')
     const appNumber = params.get('appNumber')
     setActionType(action)
+    setAppType('PAL')
+    setTaskId(Id)
+    setAppNumber(appNumber)
     console.log('ActionType is:', action)
     console.log('raptor Type is:', raptorType)
-    console.log('taskId:', taskId)
+    console.log('taskId:', Id)
     console.log('appNumber is:', appNumber)
     // setAppType(raptorType)
-    setAppType('PAL')
+
   }, [])
 
  
@@ -86,7 +91,7 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   }
 
   function onUploadClick () {
-    taskId = '60051'
+    // taskId = '60051'
     if (taskId == null || taskId === '') {
       alert('No Application number found in the URL, please check with Raptor Administrator.')
       return
