@@ -74,13 +74,6 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
     }
   }
 
-  // let taskId
-
-  // ?raptorType=PAL&actionType=Upload&taskId=61986&appNumber=2024-00474
-
-
-
-
   function getCookie (cname) {
     const name = cname + '='
     const decodedCookies = decodeURIComponent(document.cookie)
@@ -150,9 +143,7 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
 
   return (
     <div className="widget-demo jimu-widget m-2">
-      { isUpload ?
-      <UploadFile appType={appType} handleFileChange={handleFileChange} message={message} messageClass={messageClass} />
-        : ''}
+      { isUpload ? <UploadFile appType={appType} handleFileChange={handleFileChange} message={message} messageClass={messageClass} /> : ''}
       { isDownload
         ? <div className='download-div'>
             <div>

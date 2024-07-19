@@ -21,31 +21,6 @@ const ScienceLinks = {
 }
 
 const SciDownload = ({ appType, getCookie }) => {
-  // console.log('app type is:', appType)
-  // function getCookie (cname) {
-  //   const name = cname + '='
-  //   const decodedCookies = decodeURIComponent(document.cookie)
-  //   console.log(document.cookie)
-  //   //console.log('All readable cookies in browser = '+decodedCookies);
-  //   //Get key-value pair of cookies.
-  //   const ca = decodedCookies.split(';')
-  //   //Iterate over the cookies.
-  //   for (let i = 0; i < ca.length; i++) {
-  //     let c = ca[i]
-  //     //remove spaces before the cookie name, if any.
-  //     while (c.charAt(0) === ' ') {
-  //       c = c.substring(1)
-  //     }
-  //     //Check for the match of the given cookie name.
-  //     if (c.indexOf(name) === 0) {
-  //       return c.substring(name.length, c.length)
-  //     }
-  //   }
-  //   return ''
-
-  //   // return "e9c3d313-c06b-4789-bd20-e2193cd22dc6"
-  // }
-
   const onDownloadTemplate = (module, infile) => {
     const xhr = new XMLHttpRequest()
     const filedownloadPath = 'https://localhost:9264/raptor/api/attachment/downloadGISTemplate?module='
