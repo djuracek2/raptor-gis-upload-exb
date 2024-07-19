@@ -55,8 +55,6 @@ const PalDownload = (appType) => {
     xhr.open('GET', filedownloadPath + module + '&fileName=' + inFileName)
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
-      //alert(`Loaded: ${xhr.status} ${xhr.responseText}`)
-      //console.log(xhr.responseText);
         const downloadUrl = URL.createObjectURL(xhr.response)
         let a = document.createElement('a')
         document.body.appendChild(a)
@@ -81,7 +79,6 @@ const PalDownload = (appType) => {
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         //alert(`Loaded: ${xhr.status} ${xhr.responseText}`)
-        console.log(xhr.responseText)
         const downloadUrl = URL.createObjectURL(xhr.response)
         let a = document.createElement('a')
         document.body.appendChild(a)
