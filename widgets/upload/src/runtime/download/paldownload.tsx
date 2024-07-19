@@ -33,7 +33,6 @@ const PalDownload = ({ appType, getCookie }) => {
         const downloadUrl = URL.createObjectURL(xhr.response)
         let a = document.createElement('a')
         document.body.appendChild(a)
-        a.style = 'display: none'
         a.href = downloadUrl
         a.download = inFileName
         a.click()
@@ -57,7 +56,6 @@ const PalDownload = ({ appType, getCookie }) => {
         const downloadUrl = URL.createObjectURL(xhr.response)
         let a = document.createElement('a')
         document.body.appendChild(a)
-        a.style = 'display: none'
         a.href = downloadUrl
         a.download = inFileName
         a.click()

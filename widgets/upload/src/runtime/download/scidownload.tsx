@@ -1,11 +1,10 @@
-import { React, type AllWidgetProps } from 'jimu-core'
-import React, { useState } from 'react'
+// import { React, type AllWidgetProps } from 'jimu-core'
+import React from 'react'
 import { Button, Row, Container, Col } from 'jimu-ui'
 import '../app.css'
 import survey123Image from '../images/appicon.png'
 import accessImage from '../images/microsoft-access-2019.png'
 import gdbImage from '../images/fileGDB.png'
-import { activePagePartChanged } from 'jimu-core/lib/app-actions'
 
 const app = 'SCI'
 
@@ -30,12 +29,9 @@ const SciDownload = ({ appType, getCookie }) => {
     xhr.open('GET', filedownloadPath + module + '&fileName=' + inFileName)
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
-      //alert(`Loaded: ${xhr.status} ${xhr.responseText}`)
-      //console.log(xhr.responseText);
         const downloadUrl = URL.createObjectURL(xhr.response)
         let a = document.createElement('a')
         document.body.appendChild(a)
-        a.style = 'display: none'
         a.href = downloadUrl
         a.download = inFileName
         a.click()
@@ -59,7 +55,6 @@ const SciDownload = ({ appType, getCookie }) => {
         const downloadUrl = URL.createObjectURL(xhr.response)
         let a = document.createElement('a')
         document.body.appendChild(a)
-        a.style = 'display: none'
         a.href = downloadUrl
         a.download = inFileName
         a.click()
@@ -74,7 +69,7 @@ const SciDownload = ({ appType, getCookie }) => {
     <Container>
       <Col className="bg-light border download-cols">
         <div className='content'>
-            <span onClick={() => { onDownloadTemplate(app, ScienceLinks.ScienceGISDataDic) }}>Science GIS Data Dictionary</span>
+            <span className={ 'clickable-span' } onClick={() => { onDownloadTemplate(app, ScienceLinks.ScienceGISDataDic) }}>Science GIS Data Dictionary</span>
         </div>
         <Row>
           <Col>
