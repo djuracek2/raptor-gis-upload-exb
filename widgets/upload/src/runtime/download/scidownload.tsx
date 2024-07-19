@@ -20,31 +20,31 @@ const ScienceLinks = {
   ShapeFileInst: 'RAPTORGISSCISHPandDataEntry.pdf'
 }
 
-const SciDownload = (appType) => {
+const SciDownload = ({ appType, getCookie }) => {
   // console.log('app type is:', appType)
-  function getCookie (cname) {
-    const name = cname + '='
-    const decodedCookies = decodeURIComponent(document.cookie)
-    console.log(document.cookie)
-    //console.log('All readable cookies in browser = '+decodedCookies);
-    //Get key-value pair of cookies.
-    const ca = decodedCookies.split(';')
-    //Iterate over the cookies.
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i]
-      //remove spaces before the cookie name, if any.
-      while (c.charAt(0) === ' ') {
-        c = c.substring(1)
-      }
-      //Check for the match of the given cookie name.
-      if (c.indexOf(name) === 0) {
-        return c.substring(name.length, c.length)
-      }
-    }
-    return ''
+  // function getCookie (cname) {
+  //   const name = cname + '='
+  //   const decodedCookies = decodeURIComponent(document.cookie)
+  //   console.log(document.cookie)
+  //   //console.log('All readable cookies in browser = '+decodedCookies);
+  //   //Get key-value pair of cookies.
+  //   const ca = decodedCookies.split(';')
+  //   //Iterate over the cookies.
+  //   for (let i = 0; i < ca.length; i++) {
+  //     let c = ca[i]
+  //     //remove spaces before the cookie name, if any.
+  //     while (c.charAt(0) === ' ') {
+  //       c = c.substring(1)
+  //     }
+  //     //Check for the match of the given cookie name.
+  //     if (c.indexOf(name) === 0) {
+  //       return c.substring(name.length, c.length)
+  //     }
+  //   }
+  //   return ''
 
-    // return "e9c3d313-c06b-4789-bd20-e2193cd22dc6"
-  }
+  //   // return "e9c3d313-c06b-4789-bd20-e2193cd22dc6"
+  // }
 
   const onDownloadTemplate = (module, infile) => {
     const xhr = new XMLHttpRequest()
@@ -99,16 +99,16 @@ const SciDownload = (appType) => {
     <Container>
       <Col className="bg-light border download-cols">
         <div className='content'>
-            <a href="_blank" target="_blank" onClick={() => onDownloadTemplate(app, ScienceLinks.ScienceGISDataDic)}>Science GIS Data Dictionary</a>
+            <label onClick={() => { onDownloadTemplate(app, ScienceLinks.ScienceGISDataDic) }}>Science GIS Data Dictionary</label>
         </div>
         <Row>
           <Col>
             <div className='content'>
               <img src={gdbImage} alt="file gdb download" width="60px" height="60px"></img>
               <br></br>
-              <Button size='sm' onClick={() => onDownloadClick(app, ScienceLinks.FileGDBDownload)}>GDB Download</Button>
+              <Button size='sm' onClick={() => { onDownloadClick(app, ScienceLinks.FileGDBDownload) }}>GDB Download</Button>
               <br></br>
-              <a href="_blank" target="_blank" onClick={() => onDownloadTemplate(app, ScienceLinks.FileGDBInst)}>GDB Workflow Guide</a>
+              <label onClick={() => { onDownloadTemplate(app, ScienceLinks.FileGDBInst) }}>GDB Workflow Guide</label>
             </div>
           </Col>
         </Row>
@@ -119,11 +119,11 @@ const SciDownload = (appType) => {
             <div className='content'>
               <img src={survey123Image} alt="survey 123 download" width="60px" height="60px"></img>
               <br></br>
-              <Button size='sm' onClick={() => onDownloadClick(app, ScienceLinks.Survey123Download)}>Survey123 Download</Button>
+              <Button size='sm' onClick={() => { onDownloadClick(app, ScienceLinks.Survey123Download) }}>Survey123 Download</Button>
               <br></br>
-              <a href="_blank" target="_blank" onClick={() => onDownloadTemplate(app, ScienceLinks.Survey123WorkflowGuide)}>Survey123 Workflow Guide</a>
+              <label onClick={() => { onDownloadTemplate(app, ScienceLinks.Survey123WorkflowGuide) }}>Survey123 Workflow Guide</label>
               <br></br>
-              <a href="_blank" target="_blank" onClick={() => onDownloadTemplate(app, ScienceLinks.Survey123GetStarted)}>Getting Started woth DOI GeoPlatform</a>
+              <label onClick={() => { onDownloadTemplate(app, ScienceLinks.Survey123GetStarted) }}>Getting Started woth DOI GeoPlatform</label>
               </div>
           </Col>
         </Row>
@@ -134,9 +134,9 @@ const SciDownload = (appType) => {
             <div className='content'>
               <img src={accessImage} alt="microsoft access download" width="60px" height="60px"></img>
               <br></br>
-              <Button size='sm' onClick={() => onDownloadClick(app, ScienceLinks.ShapefileDownload)}>Shapefile Download</Button>
+              <Button size='sm' onClick={() => { onDownloadClick(app, ScienceLinks.ShapefileDownload) }}>Shapefile Download</Button>
               <br></br>
-              <a href="_blank" target="_blank" onClick={() => onDownloadTemplate(app, ScienceLinks.ShapeFileInst)}>Microsoft Access Workflow</a>
+              <label onClick={() => { onDownloadTemplate(app, ScienceLinks.ShapeFileInst) }}>Microsoft Access Workflow</label>
             </div>
           </Col>
         </Row>

@@ -20,31 +20,30 @@ const PalLinks = {
   MSAccessWorkflowGuide: 'RAPTORGISSCISHPandDataEntry.pdf'
 }
 
-const PalDownload = (appType) => {
-  console.log('app type is:', appType)
-  function getCookie (cname) {
-    const name = cname + '='
-    const decodedCookies = decodeURIComponent(document.cookie)
-    console.log(document.cookie)
-    //console.log('All readable cookies in browser = '+decodedCookies);
-    //Get key-value pair of cookies.
-    const ca = decodedCookies.split(';')
-    //Iterate over the cookies.
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i]
-      //remove spaces before the cookie name, if any.
-      while (c.charAt(0) === ' ') {
-        c = c.substring(1)
-      }
-      //Check for the match of the given cookie name.
-      if (c.indexOf(name) === 0) {
-        return c.substring(name.length, c.length)
-      }
-    }
-    return ''
+const PalDownload = ({ appType, getCookie }) => {
+  // function getCookie (cname) {
+  //   const name = cname + '='
+  //   const decodedCookies = decodeURIComponent(document.cookie)
+  //   console.log(document.cookie)
+  //   //console.log('All readable cookies in browser = '+decodedCookies);
+  //   //Get key-value pair of cookies.
+  //   const ca = decodedCookies.split(';')
+  //   //Iterate over the cookies.
+  //   for (let i = 0; i < ca.length; i++) {
+  //     let c = ca[i]
+  //     //remove spaces before the cookie name, if any.
+  //     while (c.charAt(0) === ' ') {
+  //       c = c.substring(1)
+  //     }
+  //     //Check for the match of the given cookie name.
+  //     if (c.indexOf(name) === 0) {
+  //       return c.substring(name.length, c.length)
+  //     }
+  //   }
+  //   return ''
 
-    // return "e9c3d313-c06b-4789-bd20-e2193cd22dc6"
-  }
+  //   // return "e9c3d313-c06b-4789-bd20-e2193cd22dc6"
+  // }
 
   const onDownloadTemplate = (module, infile) => {
     const xhr = new XMLHttpRequest()
@@ -103,9 +102,9 @@ const PalDownload = (appType) => {
                 <br></br>
                     <Button size='sm' onClick={() => { onDownloadClick(app, PalLinks.FileGDBDownload) }}>File Geodatabase</Button>
                     <br></br>
-                    <a href="_blank" target="_blank" onClick={() => { onDownloadTemplate(app, PalLinks.FileGDBWorkflowGuide) }}>GeoDatabase Workflow Guide</a>
+                    <label onClick={() => { onDownloadTemplate(app, PalLinks.FileGDBWorkflowGuide) }}>GeoDatabase Workflow Guide</label>
                     <br></br>
-                    <a href="_blank" target="_blank" onClick={() => { onDownloadTemplate(app, PalLinks.FileGDBDataDic) }}>Geodatabase Data Dictionary</a>
+                    <label onClick={() => { onDownloadTemplate(app, PalLinks.FileGDBDataDic) }}>Geodatabase Data Dictionary</label>
                 </div>
             </Col>
         </Row>
@@ -118,9 +117,9 @@ const PalDownload = (appType) => {
               <br></br>
                   <Button size='sm' onClick={() => { onDownloadClick(app, PalLinks.Survey123Download) }}>Survey123 Download</Button>
                   <br></br>
-                  <a href="_blank" target="_blank" onClick={() => { onDownloadTemplate(app, PalLinks.Survey123WorkflowGuide) }}>Survey123 Workflow Guide</a>
+                  <label onClick={() => { onDownloadTemplate(app, PalLinks.Survey123WorkflowGuide) }}>Survey123 Workflow Guide</label>
                   <br></br>
-                  <a href="_blank" target="_blank" onClick={() => { onDownloadTemplate(app, PalLinks.Survey123GetStarted) }}>Getting Started with DOI GeoPlatform</a>
+                  <label onClick={() => { onDownloadTemplate(app, PalLinks.Survey123GetStarted) }}>Getting Started with DOI GeoPlatform</label>
               </div>
             </Col>
           </Row>
@@ -133,7 +132,7 @@ const PalDownload = (appType) => {
               <br></br>
                 <Button size='sm' onClick={() => { onDownloadClick(app, PalLinks.MSAccessDownload) }} >Microsoft Access Download</Button>
                 <br></br>
-                <a href="_blank" target="_blank" onClick={() => { onDownloadTemplate(app, PalLinks.MSAccessWorkflowGuide) }}>Paleo MS Access Workflow Guide</a>
+                <label onClick={() => { onDownloadTemplate(app, PalLinks.MSAccessWorkflowGuide) }}>Paleo MS Access Workflow Guide</label>
               </div>
             </Col>
           </Row>

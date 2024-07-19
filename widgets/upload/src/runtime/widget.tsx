@@ -66,11 +66,11 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   const renderComponent = () => {
     switch (appType) {
       case 'PAL':
-        return <PalDownload appType={appType} />
+        return <PalDownload appType={appType} getCookie={ getCookie }/>
       case 'SCI':
-        return <SciDownload appType={appType} />
+        return <SciDownload appType={appType} getCookie={ getCookie } />
       case 'REC':
-        return <RecDownload appType={appType} />
+        return <RecDownload appType={appType} getCookie={ getCookie } />
     }
   }
 
