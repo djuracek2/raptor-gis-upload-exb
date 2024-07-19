@@ -10,13 +10,38 @@ import UploadFile from './upload'
 
 const Widget = (props: AllWidgetProps<IMConfig>) => {
   const [selectedFile, setSelectedFile] = useState(null)
-  const [isUpload, setIsUpload] = useState(true)
-  const [isDownload, setIsDownload] = useState(false)
-  const [actionType, setActionType] = useState('Download')
+  const [isUpload, setIsUpload] = useState()
+  const [isDownload, setIsDownload] = useState()
+  const [actionType, setActionType] = useState('')
   const [taskId, setTaskId] = useState('')
-  const [appType, setAppType] = useState('SCI')
+  const [appType, setAppType] = useState('')
   const [appNumber, setAppNumber] = useState('')
   const [isSuccessful, setIsSuccessful] = useState('')
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const action = params.get('actionType')
+    const raptorType = params.get('raptorType')
+    const Id = params.get('taskId')
+    const appNumber = params.get('appNumber')
+
+    if (action === 'Download') {
+      setIsUpload(false)
+      setIsDownload(true)
+    } else {
+      setIsUpload(true)
+      setIsDownload(false)
+    }
+
+    setActionType(action)
+    setAppType(raptorType)
+    setTaskId(Id)
+    setAppNumber(appNumber)
+    // console.log('ActionType is:', action)
+    // console.log('raptor Type is:', raptorType)
+    // console.log('taskId:', Id)
+    // console.log('appNumber is:', appNumber)
+  }, [])
 
 
   const handleFileChange = (event) => {
@@ -28,7 +53,7 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   const handleDownload = () => {
     const isActive = !isDownload
     setIsUpload(false)
-    setIsDownload(isActive)
+    setIsDownload(true)
   }
 
   const handleClose = () => {
@@ -51,21 +76,7 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
 
   // ?raptorType=PAL&actionType=Upload&taskId=61986&appNumber=2024-00474
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    const action = params.get('actionType')
-    const raptorType = params.get('raptorType')
-    const Id = params.get('taskId')
-    const appNumber = params.get('appNumber')
-    setActionType(action)
-    setAppType(raptorType)
-    setTaskId(Id)
-    setAppNumber(appNumber)
-    // console.log('ActionType is:', action)
-    // console.log('raptor Type is:', raptorType)
-    // console.log('taskId:', Id)
-    // console.log('appNumber is:', appNumber)
-  }, [])
+
 
 
   function getCookie (cname) {
@@ -152,8 +163,8 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
         : '' }
       <div className='d-flex justify-content-around'>
         <div style={{ paddingTop: '10px' }}>
-          <Button color="primary" onClick={handleDownload}>Download</Button>
-          <Button color="primary" onClick={onUploadClick}>Upload</Button>
+          { isDownload ? <Button color="primary" onClick={handleDownload}>Download</Button> : '' }
+          { isUpload ? <Button color="primary" onClick={onUploadClick}>Upload</Button> : '' }
           <Button color="primary" onClick={handleClose}>Close</Button>
         </div>
       </div>
