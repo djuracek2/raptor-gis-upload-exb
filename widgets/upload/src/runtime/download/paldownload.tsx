@@ -102,9 +102,9 @@ const PalDownload = ({ appType, getCookie }) => {
                 <br></br>
                     <Button size='sm' onClick={() => { onDownloadClick(app, PalLinks.FileGDBDownload) }}>File Geodatabase</Button>
                     <br></br>
-                    <label onClick={() => { onDownloadTemplate(app, PalLinks.FileGDBWorkflowGuide) }}>GeoDatabase Workflow Guide</label>
+                    <span className={ 'clickable-span' } onClick={() => { onDownloadTemplate(app, PalLinks.FileGDBWorkflowGuide) }}>GeoDatabase Workflow Guide</span>
                     <br></br>
-                    <label onClick={() => { onDownloadTemplate(app, PalLinks.FileGDBDataDic) }}>Geodatabase Data Dictionary</label>
+                    <span className={ 'clickable-span' } onClick={() => { onDownloadTemplate(app, PalLinks.FileGDBDataDic) }}>Geodatabase Data Dictionary</span>
                 </div>
             </Col>
         </Row>
@@ -117,9 +117,9 @@ const PalDownload = ({ appType, getCookie }) => {
               <br></br>
                   <Button size='sm' onClick={() => { onDownloadClick(app, PalLinks.Survey123Download) }}>Survey123 Download</Button>
                   <br></br>
-                  <label onClick={() => { onDownloadTemplate(app, PalLinks.Survey123WorkflowGuide) }}>Survey123 Workflow Guide</label>
+                  <span className={ 'clickable-span' } onClick={() => { onDownloadTemplate(app, PalLinks.Survey123WorkflowGuide) }}>Survey123 Workflow Guide</span>
                   <br></br>
-                  <label onClick={() => { onDownloadTemplate(app, PalLinks.Survey123GetStarted) }}>Getting Started with DOI GeoPlatform</label>
+                  <span className={ 'clickable-span' } onClick={() => { onDownloadTemplate(app, PalLinks.Survey123GetStarted) }}>Getting Started with DOI GeoPlatform</span>
               </div>
             </Col>
           </Row>
@@ -132,7 +132,7 @@ const PalDownload = ({ appType, getCookie }) => {
               <br></br>
                 <Button size='sm' onClick={() => { onDownloadClick(app, PalLinks.MSAccessDownload) }} >Microsoft Access Download</Button>
                 <br></br>
-                <label onClick={() => { onDownloadTemplate(app, PalLinks.MSAccessWorkflowGuide) }}>Paleo MS Access Workflow Guide</label>
+                <span className={ 'clickable-span' } onClick={() => { onDownloadTemplate(app, PalLinks.MSAccessWorkflowGuide) }}>Paleo MS Access Workflow Guide</span>
               </div>
             </Col>
           </Row>

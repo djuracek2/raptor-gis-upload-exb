@@ -99,7 +99,7 @@ const SciDownload = ({ appType, getCookie }) => {
     <Container>
       <Col className="bg-light border download-cols">
         <div className='content'>
-            <label onClick={() => { onDownloadTemplate(app, ScienceLinks.ScienceGISDataDic) }}>Science GIS Data Dictionary</label>
+            <span onClick={() => { onDownloadTemplate(app, ScienceLinks.ScienceGISDataDic) }}>Science GIS Data Dictionary</span>
         </div>
         <Row>
           <Col>
@@ -108,7 +108,7 @@ const SciDownload = ({ appType, getCookie }) => {
               <br></br>
               <Button size='sm' onClick={() => { onDownloadClick(app, ScienceLinks.FileGDBDownload) }}>GDB Download</Button>
               <br></br>
-              <label onClick={() => { onDownloadTemplate(app, ScienceLinks.FileGDBInst) }}>GDB Workflow Guide</label>
+              <span className={ 'clickable-span' } onClick={() => { onDownloadTemplate(app, ScienceLinks.FileGDBInst) }}>GDB Workflow Guide</span>
             </div>
           </Col>
         </Row>
@@ -121,9 +121,9 @@ const SciDownload = ({ appType, getCookie }) => {
               <br></br>
               <Button size='sm' onClick={() => { onDownloadClick(app, ScienceLinks.Survey123Download) }}>Survey123 Download</Button>
               <br></br>
-              <label onClick={() => { onDownloadTemplate(app, ScienceLinks.Survey123WorkflowGuide) }}>Survey123 Workflow Guide</label>
+              <span className={ 'clickable-span' } onClick={() => { onDownloadTemplate(app, ScienceLinks.Survey123WorkflowGuide) }}>Survey123 Workflow Guide</span>
               <br></br>
-              <label onClick={() => { onDownloadTemplate(app, ScienceLinks.Survey123GetStarted) }}>Getting Started woth DOI GeoPlatform</label>
+              <span className={ 'clickable-span' } onClick={() => { onDownloadTemplate(app, ScienceLinks.Survey123GetStarted) }}>Getting Started woth DOI GeoPlatform</span>
               </div>
           </Col>
         </Row>
@@ -136,7 +136,7 @@ const SciDownload = ({ appType, getCookie }) => {
               <br></br>
               <Button size='sm' onClick={() => { onDownloadClick(app, ScienceLinks.ShapefileDownload) }}>Shapefile Download</Button>
               <br></br>
-              <label onClick={() => { onDownloadTemplate(app, ScienceLinks.ShapeFileInst) }}>Microsoft Access Workflow</label>
+              <span className={ 'clickable-span' } onClick={() => { onDownloadTemplate(app, ScienceLinks.ShapeFileInst) }}>Microsoft Access Workflow</span>
             </div>
           </Col>
         </Row>

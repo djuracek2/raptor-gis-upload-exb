@@ -1,3 +1,13 @@
+.clickable-span {
+    cursor: pointer;
+    color: rgb(37, 243, 174);
+}
+
+.clickable-span:hover {
+    text-decoration: underline;
+}
+
+
 .download-container {
     display: flex;
     flex-direction: column;
