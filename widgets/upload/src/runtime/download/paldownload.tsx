@@ -89,24 +89,23 @@ const PalDownload = (appType) => {
       }
     }
     xhr.responseType = 'blob'
-    xhr.setRequestHeader('X-XSRF-TOKEN', getCookie('XSRF-TOKEN'));
+    xhr.setRequestHeader('X-XSRF-TOKEN', getCookie('XSRF-TOKEN'))
     xhr.send()
   }
 
   return (
   <Container>
-
       <Col className="bg-light border download-cols">
         <Row>
             <Col>
                 <div className='content'>
                 <img src={gdbImage} alt="file gdb download" width="60px" height="60px"></img>
                 <br></br>
-                    <Button size='sm' onClick={() => onDownloadClick(app, PalLinks.FileGDBDownload)}>File Geodatabase</Button>
+                    <Button size='sm' onClick={() => { onDownloadClick(app, PalLinks.FileGDBDownload) }}>File Geodatabase</Button>
                     <br></br>
-                    <a href="_blank" target="_blank" onClick={() => onDownloadTemplate(app, PalLinks.FileGDBWorkflowGuide)}>GeoDatabase Workflow Guide</a>
+                    <a href="_blank" target="_blank" onClick={() => { onDownloadTemplate(app, PalLinks.FileGDBWorkflowGuide) }}>GeoDatabase Workflow Guide</a>
                     <br></br>
-                    <a href="_blank" target="_blank" onClick={() => onDownloadTemplate(app, PalLinks.FileGDBDataDic)}>Geodatabase Data Dictionary</a>
+                    <a href="_blank" target="_blank" onClick={() => { onDownloadTemplate(app, PalLinks.FileGDBDataDic) }}>Geodatabase Data Dictionary</a>
                 </div>
             </Col>
         </Row>
@@ -117,11 +116,11 @@ const PalDownload = (appType) => {
               <div className='content'>
               <img src={survey123Image} alt="survey 123 download" width="60px" height="60px"></img>
               <br></br>
-                  <Button size='sm' onClick={() => onDownloadClick(app, PalLinks.Survey123Download)}>Survey123 Download</Button>
+                  <Button size='sm' onClick={() => { onDownloadClick(app, PalLinks.Survey123Download) }}>Survey123 Download</Button>
                   <br></br>
-                  <a href="_blank" target="_blank" onClick={() => onDownloadTemplate(app, PalLinks.Survey123WorkflowGuide)}>Survey123 Workflow Guide</a>
+                  <a href="_blank" target="_blank" onClick={() => { onDownloadTemplate(app, PalLinks.Survey123WorkflowGuide) }}>Survey123 Workflow Guide</a>
                   <br></br>
-                  <a href="_blank" target="_blank" onClick={() => onDownloadTemplate(app, PalLinks.Survey123GetStarted)}>Getting Started with DOI GeoPlatform</a>
+                  <a href="_blank" target="_blank" onClick={() => { onDownloadTemplate(app, PalLinks.Survey123GetStarted) }}>Getting Started with DOI GeoPlatform</a>
               </div>
             </Col>
           </Row>
@@ -132,9 +131,9 @@ const PalDownload = (appType) => {
               <div className='content'>
               <img src={accessImage} alt="microsoft access download" width="60px" height="60px"></img>
               <br></br>
-                <Button size='sm' onClick={() => onDownloadClick(app, PalLinks.MSAccessDownload)}>Microsoft Access Download</Button>
+                <Button size='sm' onClick={() => { onDownloadClick(app, PalLinks.MSAccessDownload) }} >Microsoft Access Download</Button>
                 <br></br>
-                <a href="_blank" target="_blank" onClick={() => onDownloadTemplate(app, PalLinks.MSAccessWorkflowGuide)}>Paleo MS Access Workflow Guide</a>
+                <a href="_blank" target="_blank" onClick={() => { onDownloadTemplate(app, PalLinks.MSAccessWorkflowGuide) }}>Paleo MS Access Workflow Guide</a>
               </div>
             </Col>
           </Row>
