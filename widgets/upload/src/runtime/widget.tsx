@@ -17,6 +17,8 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   const [appType, setAppType] = useState('')
   const [appNumber, setAppNumber] = useState('')
   const [isSuccessful, setIsSuccessful] = useState('')
+  const [message, setMessage] = useState('')
+  const [messageClass, setMessageClass] = useState('')
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -132,19 +134,24 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
     xhr.send(formData)
   }
 
-  let message
-  if (isSuccessful === 'success') {
-    message = 'Data was successfully uploaded. BLM staff will now review the data.'
-  } else if (isSuccessful !== 'success') {
-    message = 'Data upload was unsuccessful. Check email for a detailed data quality report. Resolve these data quality errors then re-initiate data upload here.'
-  } else {
-    message = ''
-  }
+  // let message
+  useEffect(() => {
+    if (isSuccessful === 'success') {
+      setMessage('Data was successfully uploaded. BLM staff will now review the data.')
+      setMessageClass('success')
+    } else if (isSuccessful === 'unsuccessful') {
+      setMessage('Data upload was unsuccessful. Check email for a detailed data quality report. Resolve these data quality errors then re-initiate data upload here.')
+      setMessageClass('unsuccessful')
+    } else {
+      setMessage('')
+      setMessageClass('nothing')
+    }
+  }, [isSuccessful])
 
   return (
     <div className="widget-demo jimu-widget m-2">
       { isUpload ?
-      <UploadFile appType={appType} handleFileChange={handleFileChange} message={message} />
+      <UploadFile appType={appType} handleFileChange={handleFileChange} message={message} messageClass={messageClass} />
         : ''}
       { isDownload
         ? <div className='download-div'>

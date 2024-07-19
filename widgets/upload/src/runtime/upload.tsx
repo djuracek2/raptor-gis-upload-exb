@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { type IMConfig } from '../config'
 import { FormGroup, Input, Button } from 'jimu-ui'
 
-const UploadFile = ({ appType, handleFileChange, message }) => {
+const UploadFile = ({ appType, handleFileChange, message, messageClass }) => {
   return (
         <div className='upload-div'>
         <div className='d-flex justify-content-center'>
@@ -23,7 +23,7 @@ const UploadFile = ({ appType, handleFileChange, message }) => {
           </FormGroup>
         </div>
         <div className="d-flex">
-          <label className="file-success">
+          <label className={ messageClass } style={{ textAlign: 'center', paddingRight: '10px' }}>
             {message}
           </label>
         </div>

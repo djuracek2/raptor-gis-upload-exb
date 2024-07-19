@@ -31,3 +31,17 @@
     text-align: center;
 }
 
+.success {
+    color: green;
+    font-weight: bolder;
+}
+
+.unsuccessful {
+    color: red;
+    font-weight: bolder;
+}
+
+.nothing {
+    color: black;
+}
+
