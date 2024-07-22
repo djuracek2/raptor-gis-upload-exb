@@ -1,12 +1,17 @@
 import { React, type AllWidgetProps } from 'jimu-core'
 import React, { useState, useEffect } from 'react'
 import { type IMConfig } from '../config'
-import { FormGroup, Input, Button } from 'jimu-ui'
+import { Button } from 'jimu-ui'
 import './app.css'
 import PalDownload from './download/paldownload'
 import SciDownload from './download/scidownload'
 import RecDownload from './download/recdownload'
 import UploadFile from './upload'
+
+type downloadType = {
+  module: string
+  infile: string
+}
 
 const Widget = (props: AllWidgetProps<IMConfig>) => {
   const [selectedFile, setSelectedFile] = useState(null)
@@ -45,6 +50,47 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
     // console.log('appNumber is:', appNumber)
   }, [])
 
+  const onDownloadTemplate = (module, infile) => {
+    const xhr = new XMLHttpRequest()
+    const filedownloadPath = 'https://localhost:9264/raptor/api/attachment/downloadGISTemplate?module='
+    const inFileName = infile
+
+    xhr.open('GET', filedownloadPath + module + '&fileName=' + inFileName)
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        const downloadUrl = URL.createObjectURL(xhr.response)
+        let a = document.createElement('a')
+        document.body.appendChild(a)
+        a.href = downloadUrl
+        a.download = inFileName
+        a.click()
+      }
+    }
+    xhr.responseType = 'blob'
+    xhr.setRequestHeader('X-XSRF-TOKEN', getCookie('XSRF-TOKEN'))
+    xhr.send()
+  }
+
+  const onDownloadClick = (module, infile) => {
+    const xhr = new XMLHttpRequest()
+    const filedownloadPath = 'https://localhost:9264/raptor/api/attachment/downloadGISTemplate?module='
+    const inFileName = infile
+
+    xhr.open('GET', filedownloadPath + module + '&fileName=' + inFileName)
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        const downloadUrl = URL.createObjectURL(xhr.response)
+        let a = document.createElement('a')
+        document.body.appendChild(a)
+        a.href = downloadUrl
+        a.download = inFileName
+        a.click()
+      }
+    }
+    xhr.responseType = 'blob'
+    xhr.setRequestHeader('X-XSRF-TOKEN', getCookie('XSRF-TOKEN'))
+    xhr.send()
+  }
 
   const handleFileChange = (event) => {
     const file = event.target.files[0]
@@ -53,7 +99,6 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   }
 
   const handleDownload = () => {
-    const isActive = !isDownload
     setIsUpload(false)
     setIsDownload(true)
   }
@@ -66,11 +111,11 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
   const renderComponent = () => {
     switch (appType) {
       case 'PAL':
-        return <PalDownload appType={appType} getCookie={ getCookie }/>
+        return <PalDownload onDownloadClick={ onDownloadClick } onDownloadTemplate={ onDownloadTemplate }/>
       case 'SCI':
-        return <SciDownload appType={appType} getCookie={ getCookie } />
+        return <SciDownload onDownloadClick={ onDownloadClick } onDownloadTemplate={ onDownloadTemplate } />
       case 'REC':
-        return <RecDownload appType={appType} getCookie={ getCookie } />
+        return <RecDownload />
     }
   }
 
@@ -127,7 +172,6 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
     xhr.send(formData)
   }
 
-  // let message
   useEffect(() => {
     if (isSuccessful === 'success') {
       setMessage('Data was successfully uploaded. BLM staff will now review the data.')
@@ -143,7 +187,7 @@ const Widget = (props: AllWidgetProps<IMConfig>) => {
 
   return (
     <div className="widget-demo jimu-widget m-2">
-      { isUpload ? <UploadFile appType={appType} handleFileChange={handleFileChange} message={message} messageClass={messageClass} /> : ''}
+      { isUpload ? <UploadFile handleFileChange={handleFileChange} message={message} messageClass={messageClass} /> : ''}
       { isDownload
         ? <div className='download-div'>
             <div>

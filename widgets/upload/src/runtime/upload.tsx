@@ -1,9 +1,8 @@
 import { React, type AllWidgetProps } from 'jimu-core'
-import React, { useState, useEffect } from 'react'
-import { type IMConfig } from '../config'
-import { FormGroup, Input, Button } from 'jimu-ui'
+import React from 'react'
+import { FormGroup, Input } from 'jimu-ui'
 
-const UploadFile = ({ appType, handleFileChange, message, messageClass }) => {
+const UploadFile = ({ handleFileChange, message, messageClass }) => {
   return (
         <div className='upload-div'>
         <div className='d-flex justify-content-center'>
