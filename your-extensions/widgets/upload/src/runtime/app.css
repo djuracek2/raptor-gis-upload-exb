@@ -1,3 +1,16 @@
+.clickable-span {
+    cursor: pointer;
+    color: white;
+}
+
+.clickable-span:hover {
+    text-decoration: underline;
+}
+
+.app-root-emotion-cache-ltr-d1wba2 .modal-header .close {
+    display: none;
+}
+
 .download-container {
     display: flex;
     flex-direction: column;
@@ -6,7 +19,6 @@
     text-align: center;
     height: 100%;
     padding-right: 20px;
-    /* border: 1px solid #000; */
 }
 
 .downloadRow {
@@ -22,12 +34,58 @@
     height: inherit;
 }
 
-/* .download-headers {
-    position: absolute;
-    left: 25;
-} */
-
 .content {
     text-align: center;
 }
 
+.success {
+    color: green;
+    font-weight: 800 !important;
+}
+
+.unsuccessful {
+    color: red;
+    font-weight: 800 !important;
+}
+
+.nothing {
+    color: black;
+}
+
+.modal-header {
+    background-color: #6d4223;
+}
+
+.modal-footer {
+    background-color: white;
+    display: flex;
+    justify-content: center !important;
+}
+
+.modal-body {
+    background-color: white;
+    color: black;
+}
+
+.modal-title {
+    color: white !important;
+}
+
+.data-buttons {
+    color: white !important;
+}
+
+.btn-primary {
+    color: var(--black);
+    border-width: 1px !important;
+    border-style: solid;
+    border-radius: 2px !important;
+}
+
+.reviewerModals {
+    top: 35%;
+}
+
+.upload-btns {
+    padding-right: 5px;
+}

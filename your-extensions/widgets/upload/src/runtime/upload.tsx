@@ -1,30 +1,34 @@
-import { React, type AllWidgetProps } from 'jimu-core'
-import React, { useState, useEffect } from 'react'
-import { type IMConfig } from '../config'
-import { FormGroup, Input, Button } from 'jimu-ui'
+import React from 'react'
+import { FormGroup, Input } from 'jimu-ui'
+import Loader from './loader'
 
-const UploadFile = (appType, handleFileChange, message) => {
+const UploadFile = ({ handleFileChange, message, messageClass, isUploading }) => {
   return (
         <div className='upload-div'>
         <div className='d-flex justify-content-center'>
-          <h5>Template Download / Data Upload</h5>
+          <h4>Template Download / Data Upload</h4>
         </div>
-        <div className='d-flex justify-content-center'>
-          <a href="#" target="_blank">GIS Data Upload Instructions</a>
-        </div>
-        <div className='d-flex justify-content-center' style={{ paddingTop: '10px' }}>
+        {/* <div className='d-flex justify-content-center'>
+          <a href="#" target="_blank" style={{ fontSize: '16px', fontWeight: '700' }}>GIS Data Upload Instructions</a>
+        </div> */}
+        <div className='d-flex justify-content-center' style={{ paddingTop: '0px', fontSize: '16px' }}>
           <label className="file-upload">
-            <span><strong>Upload Data (.Zip files only*) </strong></span>
+            <span style= {{ fontSize: '16px' }}><strong>Upload Data (.Zip files only*) </strong></span>
           </label>
         </div>
-        <div className='d-flex justify-content-center' style={{ paddingLeft: '60px' }}>
+        <div className='d-flex justify-content-center' style={{ paddingLeft: '60px', fontSize: '14px' }}>
           <FormGroup>
             <Input type="file" name="file" id="inFile" onChange={handleFileChange}/>
           </FormGroup>
         </div>
-        <div className="d-flex">
-          <label className="file-success">
-            {message}
+        <div>
+          <div className='d-flex justify-content-center'>
+        { isUploading && <Loader/> }
+        </div>
+          <label className={ messageClass } style={{ textAlign: 'center', paddingRight: '10px', fontSize: '15px' }}>
+            <strong>
+              {message}
+            </strong>
           </label>
         </div>
       </div>
